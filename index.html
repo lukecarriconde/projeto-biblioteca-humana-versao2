@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Humana: História Viva - O Idoso como Protagonista Social</title>
+    <style>
+        :root {
+            --primary: #8E7CC3;
+            --secondary: #6D9EEB;
+            --accent: #E06666;
+            --light: #F9F5EB;
+            --dark: #2C3E50;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+        }
+        
+        .logo-symbol {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 0.5rem auto;
+        }
+        
+        .contexto {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .catalogo-livros {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .livro {
+            background-color: white;
+            border-left: 5px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .livro h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .livro p {
+            color: var(--text);
+            font-style: italic;
+        }
+        
+        .equipe {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .membro {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .membro-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .cronograma {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .etapa {
+            display: flex;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .etapa::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 40px;
+            bottom: -20px;
+            width: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .etapa:last-child::before {
+            display: none;
+        }
+        
+        .etapa-marcador {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+        
+        .etapa-conteudo {
+            padding-top: 0.8rem;
+        }
+        
+        .impacto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .impacto-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .impacto-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        /* Novos estilos para as seções adicionadas */
+        .dinamica-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dinamica-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .dinamica-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .atividade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .atividade-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .atividade-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .etapa {
+                flex-direction: column;
+            }
+            
+            .etapa-marcador {
+                margin-bottom: 1rem;
+            }
+            
+            .etapa::before {
+                left: 30px;
+                top: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-symbol">📚</span>
+            </div>
+            <div>
+                <h1>Biblioteca Humana: História Viva</h1>
+                <p class="subtitle">O Idoso como Protagonista Social</p>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#contexto">Contexto</a></li>
+            <li><a href="#objetivo">Objetivo</a></li>
+            <li><a href="#metodologia">Metodologia</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#dinamicas">Dinâmicas</a></li>
+            <li><a href="#atividades">Atividades</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+            <li><a href="#cronograma">Cronograma</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="contexto">
+            <h2 class="section-title">Contexto do Projeto</h2>
+            <div class="contexto">
+                <p>O etarismo é um preconceito que afeta diretamente a forma como os idosos são percebidos e valorizados na sociedade. Muitas vezes, a velhice é associada à inutilidade ou incapacidade, quando, na verdade, representa um período de grande riqueza cultural, histórica e afetiva.</p>
+                <p>O conceito de Biblioteca Humana surgiu na Dinamarca em 2000 como uma iniciativa inovadora que transforma pessoas em "livros vivos" que podem ser "emprestados" para conversas individuais ou em pequenos grupos. Esta metodologia combate preconceitos e estereótipos através do diálogo direto e da escuta empática.</p>
+            </div>
+        </section>
+        
+        <section id="objetivo">
+            <h2 class="section-title">Objetivo da Biblioteca Humana</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3>Promover Valorização</h3>
+                    <p>Criar um espaço de escuta, acolhimento e valorização dos idosos, combatendo o etarismo através do contato direto e humanizado.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Intercâmbio Geracional</h3>
+                    <p>Facilitar o intercâmbio intergeracional de conhecimentos e experiências entre idosos e jovens.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🌟</div>
+                    <h3>Demonstrar Sabedoria</h3>
+                    <p>Demonstrar que a velhice é uma fase rica em saberes, memórias e contribuições sociais.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="metodologia">
+            <h2 class="section-title">Metodologia</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Preparação dos "Livros Humanos"</h3>
+                    <p>Seleção de idosos da comunidade, capacitação através de encontros preparatórios e catalogação com fichas contendo título, sinopse e palavras-chave.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Dinâmica da Biblioteca</h3>
+                    <p>Ambiente acolhedor organizado como biblioteca, com empréstimos de 20-30 minutos para conversas individuais ou em pequenos grupos (máximo 3 leitores).</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Processo de Empréstimo</h3>
+                    <p>Check-in para escolha do livro humano, encontro em espaço reservado, registro opcional de impressões e check-out com possibilidade de nova escolha.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="catalogo">
+            <h2 class="section-title">Catálogo de Livros Humanos</h2>
+            <div class="catalogo-livros">
+                <div class="livro">
+                    <h3>Minha Primeira Experiência de Trabalho</h3>
+                    <p>Lições de Persistência</p>
+                </div>
+                
+                <div class="livro">
+                    <h3>Um Acontecimento que Mudou Minha Vida</h3>
+                    <p>Reflexões sobre Resiliência</p>
+                </div>
+                
+                <div class="livro">
+                    <h3>Festas e Tradições da Minha Infância</h3>
+                    <p>Memórias Culturais</p>
+                </div>
+                
+                <div class="livro">
+                    <h3>Momentos de Resistência e Superação</h3>
+                    <p>Histórias de Coragem</p>
+                </div>
+                
+                <div class="livro">
+                    <h3>Amor e Relacionamentos ao Longo dos Anos</h3>
+                    <p>Sabedoria Afetiva</p>
+                </div>
+                
+                <div class="livro">
+                    <h3>Mudanças Sociais que Presenciei</h3>
+                    <p>Testemunha da História</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NOVAS SEÇÕES ADICIONADAS -->
+        <section id="dinamicas">
+            <h2 class="section-title">Dinâmicas Complementares</h2>
+            
+            <h3>Dinâmicas de Aquecimento e Integração</h3>
+            
+            <div class="dinamica-item">
+                <h3>Linha do Tempo Coletiva</h3>
+                <div class="dinamica-meta">
+                    <span class="meta-item">Duração: 30 minutos</span>
+                    <span class="meta-item">Objetivo: Visualizar diferentes gerações</span>
+                </div>
+                <p>Dinâmica: Criação de uma linha do tempo no chão com fita adesiva representando décadas. Participantes se posicionam de acordo com seu ano de nascimento e compartilham brevemente um evento marcante da época.</p>
+            </div>
+            
+            <div class="dinamica-item">
+                <h3>Cápsula do Tempo de Objetos</h3>
+                <div class="dinamica-meta">
+                    <span class="meta-item">Duração: 25 minutos</span>
+                    <span class="meta-item">Objetivo: Despertar curiosidade</span>
+                </div>
+                <p>Dinâmica: Cada idoso traz um objeto significativo e conta sua história. Os jovens tentam adivinhar o significado antes da revelação.</p>
+            </div>
+            
+            <div class="dinamica-item">
+                <h3>Roda de Primeiras Impressões</h3>
+                <div class="dinamica-meta">
+                    <span class="meta-item">Duração: 20 minutos</span>
+                    <span class="meta-item">Objetivo: Desconstruir preconceitos</span>
+                </div>
+                <p>Dinâmica: Formação de duplas intergeracionais. Cada pessoa desenha ou escreve três palavras que representa a outra geração, depois dialogam sobre estereótipos.</p>
+            </div>
+            
+            <h3>Dinâmicas Durante os "Empréstimos"</h3>
+            
+            <div class="dinamica-item">
+                <h3>Baú de Memórias Sensoriais</h3>
+                <p>Material: Caixas com objetos, aromas, texturas e sons da época. Durante a conversa, o "livro humano" pode usar elementos sensoriais para enriquecer suas narrativas.</p>
+                <p>Exemplo: Perfume antigo, disco de vinil, fotografias amareladas.</p>
+            </div>
+            
+            <div class="dinamica-item">
+                <h3>Mapa das Emoções</h3>
+                <p>Material: Papel e lápis coloridos. Enquanto escuta, o "leitor" desenha ou marca cores que representam as emoções despertadas pela história.</p>
+                <p>Objetivo: Criar registro visual-emocional da experiência.</p>
+            </div>
+            
+            <div class="dinamica-item">
+                <h3>Ponte de Gerações</h3>
+                <p>Dinâmica: A cada história contada, o "leitor" identifica uma conexão com sua própria vida ou época atual.</p>
+                <p>Registro: Anotação dessas conexões em fichas especiais.</p>
+                <p>Objetivo: Evidenciar continuidades e universalidades humanas.</p>
+            </div>
+            
+            <h3>Dinâmicas de Encerramento</h3>
+            
+            <div class="dinamica-item">
+                <h3>Círculo de Gratidão</h3>
+                <div class="dinamica-meta">
+                    <span class="meta-item">Duração: 30 minutos</span>
+                </div>
+                <p>Dinâmica: Roda final onde cada participante compartilha uma palavra ou frase sobre sua experiência.</p>
+                <p>Variação: Cada pessoa agradece especificamente a alguém do grupo.</p>
+            </div>
+            
+            <div class="dinamica-item">
+                <h3>Plantio Simbólico</h3>
+                <p>Material: Sementes, vasos pequenos, terra.</p>
+                <p>Dinâmica: Cada dupla planta uma semente como símbolo da continuidade e crescimento das relações intergeracionais.</p>
+                <p>Objetivo: Criar metáfora tangível do projeto.</p>
+            </div>
+        </section>
+        
+        <section id="atividades">
+            <h2 class="section-title">Atividades de Confraternização</h2>
+            
+            <div class="atividade-grid">
+                <div class="atividade-item">
+                    <h3>Café da Memória: Sabores de Cada Tempo</h3>
+                    <p>Estrutura: Mesa com quitutes típicos de diferentes décadas.</p>
+                    <p>Atividade: Cada geração apresenta uma receita tradicional de sua época.</p>
+                    <p>Dinâmica: Troca de receitas e histórias culinárias.</p>
+                    <p>Produto: Livro de receitas intergeracional.</p>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Sarau Intergeracional: Talentos Sem Idade</h3>
+                    <p>Duração: 2 horas</p>
+                    <p>Atividades:</p>
+                    <ul>
+                        <li>Apresentação de músicas de diferentes épocas</li>
+                        <li>Declamação de poesias</li>
+                        <li>Exibição de danças típicas</li>
+                        <li>Teatro com cenas do cotidiano de outras épocas</li>
+                    </ul>
+                    <p>Participação: Colaborativa entre todas as gerações.</p>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Oficina de Artes Integradas: Criando Juntos</h3>
+                    <p>Atividades:</p>
+                    <ul>
+                        <li>Pintura colaborativa em tela grande</li>
+                        <li>Criação de colagem com fotos e materiais diversos</li>
+                        <li>Confecção de marcadores de livro personalizados</li>
+                        <li>Gravação de áudios com histórias para arquivo digital</li>
+                    </ul>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Piquenique dos Tempos: Encontro ao Ar Livre</h3>
+                    <p>Local: Parque ou jardim</p>
+                    <p>Atividades:</p>
+                    <ul>
+                        <li>Jogos tradicionais (peteca, amarelinha, cabo de guerra)</li>
+                        <li>Contação de histórias embaixo de árvores</li>
+                        <li>Música ao vivo com violão e participação geral</li>
+                        <li>Caminhada contemplativa com paradas para histórias</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Atividades Complementares</h3>
+            
+            <div class="atividade-grid">
+                <div class="atividade-item">
+                    <h3>Projeto Fotográfico "Retratos Cruzados"</h3>
+                    <p>Dinâmica: Jovens fotografam idosos e vice-versa.</p>
+                    <p>Produto: Exposição com fotos e legendas escritas pelos próprios fotografados.</p>
+                    <p>Objetivo: Troca de perspectivas através do olhar.</p>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Laboratório de Tecnologia Reversa</h3>
+                    <p>"Jovens Ensinam, Idosos Compartilham"</p>
+                    <p>Atividade: Jovens ensinam tecnologia digital enquanto idosos compartilham saberes práticos tradicionais.</p>
+                    <p>Exemplos: WhatsApp vs. cartas manuscritas, GPS vs. orientação pelos astros.</p>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Teatro do Oprimido Intergeracional</h3>
+                    <p>Técnica: Baseada em Augusto Boal.</p>
+                    <p>Dinâmica: Encenação de situações de etarismo seguida de intervenções propostas pelo público.</p>
+                    <p>Objetivo: Vivenciar e transformar situações de preconceito.</p>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Jornal Vivo Intergeracional</h3>
+                    <p>Produto: Publicação com:</p>
+                    <ul>
+                        <li>Entrevistas cruzadas</li>
+                        <li>Artigos de opinião de diferentes gerações sobre temas atuais</li>
+                        <li>Seção "Era uma vez... é hoje em dia"</li>
+                        <li>Crônicas sobre os encontros da biblioteca humana</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Metodologias Participativas Adicionais</h3>
+            
+            <div class="atividade-grid">
+                <div class="atividade-item">
+                    <h3>World Café Intergeracional</h3>
+                    <p>Estrutura: Mesas temáticas com rotatividade de participantes.</p>
+                    <p>Temas sugeridos:</p>
+                    <ul>
+                        <li>"Como era namorar antes e agora?"</li>
+                        <li>"Trabalho: mudanças e permanências"</li>
+                        <li>"Tecnologia: facilitação ou complicação?"</li>
+                        <li>"Valores familiares através dos tempos"</li>
+                    </ul>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Constelação de Histórias</h3>
+                    <p>Dinâmica: Pessoas se posicionam no espaço de acordo com similaridades de experiências.</p>
+                    <p>Variações: Por décadas de nascimento, eventos históricos vividos, profissões, origens geográficas.</p>
+                    <p>Objetivo: Visualizar conexões e diversidades.</p>
+                </div>
+                
+                <div class="atividade-item">
+                    <h3>Mesa de Negociação Geracional</h3>
+                    <p>Formato: Debate estruturado sobre questões contemporâneas.</p>
+                    <p>Dinâmica: Cada geração apresenta sua perspectiva, seguida de busca por consensos.</p>
+                    <p>Temas: Meio ambiente, política, família, trabalho, tecnologia.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="equipe">
+            <h2 class="section-title">Estrutura Operacional</h2>
+            <div class="equipe">
+                <div class="membro">
+                    <div class="membro-avatar">👵</div>
+                    <h3>Livros Humanos</h3>
+                    <p>Idosos protagonistas compartilhando suas histórias</p>
+                </div>
+                
+                <div class="membro">
+                    <div class="membro-avatar">👩‍🎓</div>
+                    <h3>Bibliotecários Humanos</h3>
+                    <p>Estudantes que auxiliam na organização e mediação</p>
+                </div>
+                
+                <div class="membro">
+                    <div class="membro-avatar">👨‍🏫</div>
+                    <h3>Facilitadores</h3>
+                    <p>Professores ou profissionais que acompanham o processo</p>
+                </div>
+                
+                <div class="membro">
+                    <div class="membro-avatar">📷</div>
+                    <h3>Documentaristas</h3>
+                    <p>Responsáveis pelo registro audiovisual (com autorização)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cronograma">
+            <h2 class="section-title">Cronograma Expandido (8 semanas)</h2>
+            <div class="cronograma">
+                <div class="etapa">
+                    <div class="etapa-marcador">1-2</div>
+                    <div class="etapa-conteudo">
+                        <h3>Semanas 1-2</h3>
+                        <p>Planejamento, recrutamento e preparação dos materiais</p>
+                    </div>
+                </div>
+                
+                <div class="etapa">
+                    <div class="etapa-marcador">3</div>
+                    <div class="etapa-conteudo">
+                        <h3>Semana 3</h3>
+                        <p>Capacitação de "livros humanos" e dinâmica de integração</p>
+                    </div>
+                </div>
+                
+                <div class="etapa">
+                    <div class="etapa-marcador">4</div>
+                    <div class="etapa-conteudo">
+                        <h3>Semana 4</h3>
+                        <p>Primeira rodada da Biblioteca Humana + Café da Memória</p>
+                    </div>
+                </div>
+                
+                <div class="etapa">
+                    <div class="etapa-marcador">5</div>
+                    <div class="etapa-conteudo">
+                        <h3>Semana 5</h3>
+                        <p>Segunda rodada + Oficina de Artes Integradas</p>
+                    </div>
+                </div>
+                
+                <div class="etapa">
+                    <div class="etapa-marcador">6</div>
+                    <div class="etapa-conteudo">
+                        <h3>Semana 6</h3>
+                        <p>Terceira rodada + Sarau Intergeracional</p>
+                    </div>
+                </div>
+                
+                <div class="etapa">
+                    <div class="etapa-marcador">7</div>
+                    <div class="etapa-conteudo">
+                        <h3>Semana 7</h3>
+                        <p>Sistematização, criação de produtos finais e avaliação</p>
+                    </div>
+                </div>
+                
+                <div class="etapa">
+                    <div class="etapa-marcador">8</div>
+                    <div class="etapa-conteudo">
+                        <h3>Semana 8</h3>
+                        <p>Cerimônia de encerramento, Festival "História Viva" e planejamento da continuidade</p>
+                        <p>Criação de canal do YouTube com as histórias dos idosos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="impacto">
+            <h2 class="section-title">Impacto Esperado</h2>
+            <div class="impacto-grid">
+                <div class="impacto-item">
+                    <div class="impacto-icon">📉</div>
+                    <h3>Redução de Estereótipos</h3>
+                    <p>Diminuição de visões negativas sobre a velhice através de encontros reais</p>
+                </div>
+                
+                <div class="impacto-item">
+                    <div class="impacto-icon">💎</div>
+                    <h3>Valorização</h3>
+                    <p>Idosos reconhecidos como protagonistas sociais e fontes de conhecimento</p>
+                </div>
+                
+                <div class="impacto-item">
+                    <div class="impacto-icon">🗣️</div>
+                    <h3>Diálogo Intergeracional</h3>
+                    <p>Criação sustentável de espaços de conversa entre gerações</p>
+                </div>
+                
+                <div class="impacto-item">
+                    <div class="impacto-icon">❤️</div>
+                    <h3>Sensibilização</h3>
+                    <p>Conscientização da comunidade para práticas inclusivas ao envelhecimento</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Biblioteca Humana: História Viva</h3>
+                <p>Projeto acadêmico da disciplina Psicologia do Desenvolvimento Adulto/Idoso</p>
+                <p>Profª: Marcela Silva Baccelli</p>
+                <p>Turma: 2025.02</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: contato@bibliotecahumanahistoriaviva.com</p>
+                <p>Telefone: (XX) XXXX-XXXX</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Produtos Finais</h3>
+                <p>Catálogo permanente dos livros humanos</p>
+                <p>Livro de impressões dos leitores</p>
+                <p>Registro audiovisual e exposição fotográfica</p>
+                <p>Canal do YouTube com histórias</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Biblioteca Humana: História Viva - Todos os direitos reservados</p>
+        </div>
+    </footer>
+</body>
+</html>
